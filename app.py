@@ -242,6 +242,7 @@ vehicles_by_maketype_75k = df_75k.groupby(['make', 'type'], observed=True).agg(
 vehicles_by_maketype_75k[['avg_price', 'avg_odometer', 'percent_of_4wd', 'avg_days_listed']] = vehicles_by_maketype_75k[['avg_price', 'avg_odometer', 'percent_of_4wd', 'avg_days_listed']].round(1)
 
 # Visualizing the number of vehicle listings by make and type
+vehicles_by_maketype_75k['type'] = vehicles_by_maketype_75k['type'].cat.remove_unused_categories()
 vehicles_by_make_type = px.bar(
     vehicles_by_maketype_75k,
     x='make',
